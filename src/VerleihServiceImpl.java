@@ -191,24 +191,27 @@ class VerleihServiceImpl extends AbstractObservableService
         return result;
     }
 
-    @Override
+    @Override	
     public List<Verleihkarte> getVerleihkartenFuer(Kunde kunde)
-    {
-        List<Verleihkarte> result = new ArrayList<Verleihkarte>();
-        for (Verleihkarte verleihkarte : _verleihkarten.values())
-        {
-            if (verleihkarte.getEntleiher()
-                .equals(kunde))
-            {
-                result.add(verleihkarte);
-            }
-        }
-        return result;
-    }
+	{
+        assert kundeImBestand(kunde) : "Vorbedingung verletzt: Kunde ist nicht im Bestand!" // Man kann keine Verleihkarten getten fuer einen Kunden, der nicht existiert
 
+	    List<Verleihkarte> result = new ArrayList<Verleihkarte>();
+	    for (Verleihkarte verleihkarte : _verleihkarten.values())
+	    {
+	        if (verleihkarte.getEntleiher()
+	            .equals(kunde))
+	        {
+	            result.add(verleihkarte);
+	        }
+	    }
+	    return result;
+	}
     @Override
     public Verleihkarte getVerleihkarteFuer(Medium medium)
     {
+        assert istVerliehen(medium) : "Vorbedingung verletzt: Medium ist nicht verliehen"; // Es gibt keine Verleihkarte, wenn das Medium nicht verliehen ist
+
         return _verleihkarten.get(medium);
     }
 
