@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 //Die in den Testfällen verwendeten assert-Anweisungen werden über
 //einen sogenannten statischen Import bereitgestellt, zum Beispiel:
@@ -65,6 +66,20 @@ public class VerleihServiceImplTest
     @Test
     public void testNochEinTestFall1()
     {
+        List<Medium> medienZuVerleihen = new ArrayList<Medium>();
+        medienZuVerleihen.add(_abbey);
+        medienZuVerleihen.add(_shape);
+
+        _verleihService.verleiheAn(_homer, medienZuVerleihen, Datum.heute());
+
+        Assert.assertNotNull(_verleihService.getVerleihkarteFuer(_abbey));
+        assertTrue(_verleihService.getVerleihkarteFuer(_abbey)
+            .equals(new Verleihkarte(_homer, _abbey, Datum.heute())));
+
+        Assert.assertNotNull(_verleihService.getVerleihkarteFuer(_shape));
+        assertTrue(_verleihService.getVerleihkarteFuer(_shape)
+            .equals(new Verleihkarte(_homer, _shape, Datum.heute())));
+
     }
 
     @Test
