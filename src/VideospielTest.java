@@ -43,6 +43,19 @@ public class VideospielTest {
         assertEquals("Dasselbe Exemplare der gleichen Videospiele sollte gleich sein", _videospiel1, _videospiel1);
     }
 
+    @Test
+    /*
+     *  Testet ob formartierter string passt
+     */
+    public void testFormatierterString()
+    {
+        assertEquals("Formatierter String ist nicht wie erwartet", "Videospiel:\n" +
+                "    Titel: Titel\n" +
+                "    System: Steamdeck\n" +
+                "    Kommentar: Kommentar\n" +
+                "    Bezeichnung Videospiel", _videospiel1.getFormatiertenString());
+    }
+
     private Videospiel getMedium()
     {
         return new Videospiel(TITEL, SYSTEM, BEZEICHNUNG, KOMMENTAR);

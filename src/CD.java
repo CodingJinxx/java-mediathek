@@ -100,6 +100,7 @@ class CD implements Medium
         return _titel;
     }
 
+    @Override
     public String getFormatiertenString()
     {
         return getMedienBezeichnung() + ":\n" + "    " + "Titel: " + _titel

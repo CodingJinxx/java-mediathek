@@ -36,4 +36,13 @@ interface Medium
      */
     String getTitel();
 
+    /**
+     * Gibt formartierten String zurueck
+     *
+     * @return String formatierter String
+     *
+     * @ensure result != null
+     */
+    String getFormatiertenString();
+
 }
