@@ -75,8 +75,8 @@ class DatenEinleser
         KundenEinleser kundenEinleser = new KundenEinleser();
         _kunden = kundenEinleser.leseKundenEin(_kundenDatei);
         MedienEinleser medienEinleser = new MedienEinleser();
-        Map<Medium, Verleihkarte> medienMap = medienEinleser
-            .leseMedienEin(_kunden, _medienDatei);
+        Map<Medium, Verleihkarte> medienMap = medienEinleser.leseMedienEin(
+                _kunden, _medienDatei);
         _medien = new ArrayList<Medium>(medienMap.keySet());
         _verleihkarten = new ArrayList<Verleihkarte>();
         for (Entry<Medium, Verleihkarte> entry : medienMap.entrySet())

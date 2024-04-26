@@ -37,35 +37,9 @@ class MedienDetailAnzeigerWerkzeug
         for (Medium medium : medien)
         {
             selectedMedienTextArea.append(medium.getFormatiertenString());
+            selectedMedienTextArea.append("--------------- \n");
         }
     }
-
-//    public void setMedien(List<Medium> medien)
-//    {
-//        assert medien != null : "Vorbedingung verletzt: (medien != null)";
-//        JTextArea selectedMedienTextArea = _ui.getMedienAnzeigerTextArea();
-//        selectedMedienTextArea.setText("");
-//        // TODO Aufgabe 3.3.1 Videospiel sollte hier ergänzt werden
-//        for (Medium medium : medien)
-//        {
-//            if (medium instanceof CD)
-//            {
-//                CD cd = (CD) medium;
-//                selectedMedienTextArea.append(cd.getFormatiertenString());
-//
-//            }
-//            else if (medium instanceof DVD)
-//            {
-//                DVD dvd = (DVD) medium;
-//                selectedMedienTextArea.append(dvd.getFormatiertenString());
-//            }
-//            else if(medium instanceof Videospiel)
-//            {
-//                Videospiel videospiel = (Videospiel) medium;
-//                selectedMedienTextArea.append(videospiel.getFormatiertenString());
-//            }
-//        }
-//    }
 
     /**
      * Gibt das Panel dieses Subwerkzeugs zurück.

@@ -57,8 +57,7 @@ class KundenauflisterWerkzeug extends ObservableSubWerkzeug
     private void setzeAnzuzeigendeKunden()
     {
         List<Kunde> kunden = _kundenstamm.getKunden();
-        _ui.getKundenAuflisterTableModel()
-            .setKunden(kunden);
+        _ui.getKundenAuflisterTableModel().setKunden(kunden);
     }
 
     /**
@@ -67,16 +66,15 @@ class KundenauflisterWerkzeug extends ObservableSubWerkzeug
      */
     private void registriereKundenAnzeigenAktion()
     {
-        _ui.getKundenTable()
-            .getSelectionModel()
-            .addListSelectionListener(new ListSelectionListener()
-            {
-                @Override
-                public void valueChanged(ListSelectionEvent e)
+        _ui.getKundenTable().getSelectionModel()
+                .addListSelectionListener(new ListSelectionListener()
                 {
-                    informiereUeberAenderung();
-                }
-            });
+                    @Override
+                    public void valueChanged(ListSelectionEvent e)
+                    {
+                        informiereUeberAenderung();
+                    }
+                });
     }
 
     /**
@@ -89,8 +87,7 @@ class KundenauflisterWerkzeug extends ObservableSubWerkzeug
     public Kunde getSelectedKunde()
     {
         Kunde result = null;
-        int selectedRow = _ui.getKundenTable()
-            .getSelectedRow();
+        int selectedRow = _ui.getKundenTable().getSelectedRow();
         KundenTableModel kundenTableModel = _ui.getKundenAuflisterTableModel();
         if (kundenTableModel.zeileExistiert(selectedRow))
         {

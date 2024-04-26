@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,7 +10,8 @@ public class VerleihkarteTest
     private Kunde _kunde;
     private Medium _medium;
 
-    public VerleihkarteTest()
+    @Before
+    public void setUp()
     {
         _kunde = new Kunde(new Kundennummer(123456), "ich", "du");
 
@@ -17,6 +19,12 @@ public class VerleihkarteTest
 
         _medium = new CD("bar", "baz", "foo", 123);
         _karte = new Verleihkarte(_kunde, _medium, _datum);
+    }
+
+    @Test
+    public void testegetFormatiertenString() throws Exception
+    {
+        assertNotNull(_karte.getFormatiertenString());
     }
 
     @Test
@@ -28,10 +36,27 @@ public class VerleihkarteTest
     }
 
     @Test
+    public void testgetMietgebuehr()
+    {
+        // TODO für Aufgabe 4.2.4: Die Kommentarzeichen für die folgenden
+        // Anweisungen entfernen
+        // Datum tag1 = Datum.heute().minus(1);
+        // Verleihkarte karte = new Verleihkarte(_kunde, _medium, tag1);
+        // assertEquals(new Geldbetrag(300 * 2), karte.getMietgebuehr());
+        //
+        // Datum tag2 = Datum.heute().minus(2);
+        // karte = new Verleihkarte(_kunde, _medium, tag2);
+        // assertEquals(new Geldbetrag(300 * 3), karte.getMietgebuehr());
+        //
+        // Datum tag3 = Datum.heute().minus(7);
+        // karte = new Verleihkarte(_kunde, _medium, tag3);
+        // assertEquals(new Geldbetrag(300 * 8), karte.getMietgebuehr());
+    }
+
+    @Test
     public void testgetAusleihdauer()
     {
-        Datum datum = Datum.heute()
-            .minus(10);
+        Datum datum = Datum.heute().minus(10);
         _karte = new Verleihkarte(_kunde, _medium, datum);
         assertEquals(11, _karte.getAusleihdauer());
     }
@@ -46,12 +71,11 @@ public class VerleihkarteTest
 
         Kunde kunde2 = new Kunde(new Kundennummer(654321), "ich", "du");
         CD medium2 = new CD("hallo", "welt", "foo", 321);
-        Datum datum2 = Datum.heute()
-            .minus(1);
+        Datum datum2 = Datum.heute().minus(1);
         Verleihkarte karte2 = new Verleihkarte(kunde2, medium2, datum2);
 
         assertNotEquals(_karte, karte2);
-        assertNotSame(_karte.hashCode(), karte2.hashCode());
+        assertNotEquals(_karte.hashCode(), karte2.hashCode());
 
     }
 }

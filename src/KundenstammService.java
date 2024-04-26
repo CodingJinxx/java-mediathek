@@ -11,7 +11,7 @@ import java.util.List;
  * @author SE2-Team
  * @version SoSe 2021
  */
-public interface KundenstammService extends ObservableService
+interface KundenstammService extends ObservableService
 {
 
     /**

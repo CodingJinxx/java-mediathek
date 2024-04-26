@@ -10,8 +10,8 @@ import java.util.List;
  * @author SE2-Team
  * @version SoSe 2021
  */
-class MedienbestandServiceImpl extends AbstractObservableService
-        implements MedienbestandService
+class MedienbestandServiceImpl extends AbstractObservableService implements
+        MedienbestandService
 {
 
     /**
@@ -35,8 +35,7 @@ class MedienbestandServiceImpl extends AbstractObservableService
     @Override
     public void entferneMedium(Medium medium)
     {
-        assert enthaeltMedium(
-                medium) : "Vorbedingung verletzt: enthaeltMedium(medium)";
+        assert enthaeltMedium(medium) : "Vorbedingung verletzt: enthaeltMedium(medium)";
         _medienbestand.remove(medium);
 
         informiereUeberAenderung();
@@ -52,8 +51,7 @@ class MedienbestandServiceImpl extends AbstractObservableService
     @Override
     public void fuegeMediumEin(Medium neuesMedium)
     {
-        assert !enthaeltMedium(
-                neuesMedium) : "Vorbedingung verletzt: !enthaeltMedium(medium)";
+        assert !enthaeltMedium(neuesMedium) : "Vorbedingung verletzt: !enthaeltMedium(medium)";
         _medienbestand.add(neuesMedium);
 
         informiereUeberAenderung();

@@ -32,7 +32,7 @@ class KundenDetailAnzeigerWerkzeug
         selectedKundenTextArea.setText("");
         if (kunde != null)
         {
-            selectedKundenTextArea.append(kunde.toString());
+            selectedKundenTextArea.append(kunde.getFormatiertenString());
         }
     }
 

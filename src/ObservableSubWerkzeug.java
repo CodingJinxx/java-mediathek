@@ -19,7 +19,7 @@ import java.util.Set;
  * @author SE2-Team
  * @version SoSe 2021
  */
-public abstract class ObservableSubWerkzeug
+abstract class ObservableSubWerkzeug
 {
     private Set<SubWerkzeugObserver> _alleBeobachter;
 

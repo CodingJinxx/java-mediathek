@@ -7,7 +7,7 @@ import java.awt.Font;
  * @author SE2-Team
  * @version SoSe 2021
  */
-public interface UIConstants
+interface UIConstants
 {
 
     static final Color BACKGROUND_COLOR = new Color(255, 255, 255);

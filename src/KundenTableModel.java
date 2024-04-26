@@ -15,8 +15,8 @@ class KundenTableModel extends AbstractTableModel
 {
     private static final long serialVersionUID = 1L;
 
-    private static final String[] COLUMN_NAMES = new String[] {"Kundennummer",
-            "Vorname", "Nachname"};
+    private static final String[] COLUMN_NAMES = new String[] { "Kundennummer",
+            "Vorname", "Nachname" };
 
     /**
      * Eine Liste, die die Kunden zwischenspeichert/cached und die
@@ -59,8 +59,7 @@ class KundenTableModel extends AbstractTableModel
         switch (column)
         {
         case 0:
-            ergebnis = kunde.getKundennummer()
-                .toString();
+            ergebnis = kunde.getKundennummer().toString();
             break;
         case 1:
             ergebnis = kunde.getVorname();
@@ -83,8 +82,7 @@ class KundenTableModel extends AbstractTableModel
      */
     public Kunde getKundeFuerZeile(int zeile)
     {
-        assert zeileExistiert(
-                zeile) : "Vorbedingung verletzt: zeileExistiert(zeile)";
+        assert zeileExistiert(zeile) : "Vorbedingung verletzt: zeileExistiert(zeile)";
         return _kundenListe.get(zeile);
     }
 

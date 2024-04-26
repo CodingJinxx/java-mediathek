@@ -10,6 +10,18 @@ interface Medium
 {
 
     /**
+     * Gibt einen formatierten Text mit allen Eigenschaften des Mediums zurück.
+     * Jedes Attribute steht in einer eigenen Zeile mit der Form "Attributename:
+     * Attributwert". Hinweis: Ein Zeilenumbruch wird durch den Character '\n'
+     * dargestellt.
+     * 
+     * @return Eine Textrepräsentation des Mediums.
+     * 
+     * @ensure result != null
+     */
+    String getFormatiertenString();
+
+    /**
      * Gibt den Kommentar zu diesem Medium zurück.
      * 
      * @return Den Kommentar zu diesem Medium.
@@ -17,6 +29,16 @@ interface Medium
      * @ensure result != null
      */
     String getKommentar();
+
+    /**
+     * Ändert den Kommentar des Mediums
+     * 
+     * @param kommentar Ein Kommentar zu diesem Medium
+     * 
+     * @require kommentar != null
+     * @ensure getKommentar() == kommentar
+     */
+    public void setKommentar(String kommentar);
 
     /**
      * Gibt die Bezeichnung für die Medienart zurück.
@@ -37,12 +59,13 @@ interface Medium
     String getTitel();
 
     /**
-     * Gibt formartierten String zurueck
-     *
-     * @return String formatierter String
-     *
-     * @ensure result != null
+     * Ändert den Titel des Mediums.
+     * 
+     * @param titel Der Titel des Mediums
+     * 
+     * @require titel != null
+     * @ensure getTitel() == titel
      */
-    String getFormatiertenString();
+    public void setTitel(String titel);
 
 }

@@ -33,7 +33,8 @@ class KundenEinleser
      * 
      * @ensure result != null
      */
-    public List<Kunde> leseKundenEin(File kundenDatei) throws DateiLeseException
+    public List<Kunde> leseKundenEin(File kundenDatei)
+            throws DateiLeseException
     {
         assert kundenDatei != null : "Vorbedingung verletzt: kundenDatei != null";
         List<Kunde> eingeleseneKunden = new ArrayList<Kunde>();

@@ -1,101 +1,123 @@
-public class Videospiel implements Medium {
+/**
+ * {@link Videospiel} ist ein {@link Medium} mit einer zusätzlichen
+ * Informationen zum kompatiblen System.
+ * 
+ * @author SE2-Team
+ * @version SoSe 2021
+ */
+class Videospiel implements Medium
+{
+    /**
+     * Das System, auf dem das Spiel lauffähig ist
+     */
+    private String _system;
 
     /**
-     * Das System
+     * Ein Kommentar zum Medium
      */
-    private final String _system;
-    /**
-     * Das Kommentar
-     */
-    private final String _kommentar;
-    /**
-     * Der Bezeichner
-     */
-    private final String _bezeichnung;
-    /**
-     * Titel
-     */
-    private final String _titel;
+    private String _kommentar;
 
     /**
-     * Initialisiert ein neues Exemplar.
-     *
-     * @param titel Der Titel der Videospiel
-     * @param system Das System des Videospiel
-     * @param bezeichnung Die Bezeichnung des Videospiel
-     * @param kommentar Ein Kommentar zu der Videospiel
-     *
+     * Der Titel des Mediums
+     */
+    private String _titel;
+
+    /**
+     * Initialisiert ein neues Videospiel.
+     * 
+     * @param titel Der Titel des Spiels
+     * @param kommentar Ein Kommentar zum Spiel
+     * @param system Die Bezeichnung des System
+     * 
      * @require titel != null
      * @require kommentar != null
-     * @require interpret != null
      * @require system != null
-     *
-     * @ensure {@link #getTitel()} == titel
-     * @ensure {@link #getKommentar()} == kommentar
-     * @ensure {@link #getSystem()} == system
-     * @ensure {@link #getMedienBezeichnung()} == bezeichnung
+     * 
+     * @ensure getTitel() == titel
+     * @ensure getKommentar() == kommentar
+     * @ensure getSystem() == system
      */
-    public Videospiel(String titel, String system, String bezeichnung, String kommentar) {
+    public Videospiel(String titel, String kommentar, String system)
+    {
         assert titel != null : "Vorbedingung verletzt: titel != null";
         assert kommentar != null : "Vorbedingung verletzt: kommentar != null";
-        assert bezeichnung != null : "Vorbedingung verletzt: bezeichnung != null";
         assert system != null : "Vorbedingung verletzt: system != null";
-        _system = system;
         _titel = titel;
         _kommentar = kommentar;
-        _bezeichnung = bezeichnung;
+        _system = system;
+    }
+
+    @Override
+    public String getMedienBezeichnung()
+    {
+        return "Videospiel";
     }
 
     /**
-     * Initialisiert ein neues Exemplar.
-     *
-     * @param titel Der Titel der Videospiel
-     * @param system Das System des Videospiel
-     * @param kommentar Ein Kommentar zu der Videospiel
-     *
-     * @require titel != null
-     * @require kommentar != null
-     * @require bezeichnung != null
-     * @require system != null
-     *
-     * @ensure {@link #getTitel()} == titel
-     * @ensure {@link #getKommentar()} == kommentar
-     * @ensure {@link #getSystem()} == system
-     * @ensure {@link #getMedienBezeichnung()} == bezeichnung
+     * Gibt das System zurück, auf dem das Spiel lauffähig ist.
+     * 
+     * @return Das System, auf dem das Spiel ausgeführt werden kann.
+     * 
+     * @ensure result != null
      */
-    public Videospiel(String titel, String kommentar, String system) {
-        this(titel, system, "Videospiel", kommentar);
-    }
-
-    @Override
-    public String getKommentar() {
-        return _kommentar;
-    }
-
-    @Override
-    public String getMedienBezeichnung() {
-        return _bezeichnung;
-    }
-
-    @Override
-    public String getTitel() {
-        return _titel;
-    }
-
-    /**
-     * Get System
-     *
-     * @return String System
-     *
-     * @ensure _system != null
-     */
-    public String getSystem() {
+    public String getSystem()
+    {
         return _system;
     }
 
     @Override
-    public String getFormatiertenString() {
-        return String.format("Videospiel:\n    Titel: %1$s\n    System: %2$s\n    Kommentar: %3$s\n    Bezeichnung %4$s"
-                , _titel, _system, _kommentar, _bezeichnung);
+    public String toString()
+    {
+        return getFormatiertenString();
+    }
+
+    @Override
+    public String getKommentar()
+    {
+        return _kommentar;
+    }
+
+    /**
+     * Ändert den Kommentar
+     * 
+     * @param kommentar Ein Kommentar zum Medium
+     * 
+     * @require kommentar != null
+     * @ensure getKommentar() == kommentar
+     */
+    @Override
+    public void setKommentar(String kommentar)
+    {
+        assert kommentar != null : "Vorbedingung verletzt: kommentar != null";
+        _kommentar = kommentar;
+    }
+
+    @Override
+    public String getTitel()
+    {
+        return _titel;
+    }
+
+    /**
+     * Ändert den Titel
+     * 
+     * @param titel Der Titel des Mediums
+     * 
+     * @require titel != null
+     * @ensure getTitel() == titel
+     */
+    @Override
+    public void setTitel(String titel)
+    {
+        assert titel != null : "Vorbedingung verletzt: titel != null";
+        _titel = titel;
+    }
+
+    @Override
+    public String getFormatiertenString()
+    {
+        return getMedienBezeichnung() + ":\n" + "    " + "Titel: " + _titel
+                + "\n" + "    " + "Kommentar: " + _kommentar + "\n" + "    "
+                + "System: " + _system + "\n";
     }
 }

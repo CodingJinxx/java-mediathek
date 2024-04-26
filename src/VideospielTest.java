@@ -1,63 +1,67 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
-public class VideospielTest {
+/**
+ */
+public class VideospielTest
+{
     private static final String KOMMENTAR = "Kommentar";
     private static final String TITEL = "Titel";
     private static final String BEZEICHNUNG = "Videospiel";
-    private static final String SYSTEM = "Steamdeck";
-    private Videospiel _videospiel1;
-    private Videospiel _videospiel2;
+    private static final String SYSTEM = "System";
+    private static final String FORMATIERTER_STRING = BEZEICHNUNG+":\n    Titel: "+TITEL+"\n    Kommentar: "+KOMMENTAR+"\n    System: "+SYSTEM+"\n";
+    private Videospiel _videoSpiel;
 
-    public VideospielTest()
+    @Before
+    public void setUp()
     {
-        _videospiel1 = getMedium();
-        _videospiel2 = getMedium();
+        _videoSpiel = getMedium();
+    }
+
+    @Test
+    public void testeKonstruktoren()
+    {
+        assertEquals(TITEL, _videoSpiel.getTitel());
+        assertEquals(KOMMENTAR, _videoSpiel.getKommentar());
+        assertEquals(SYSTEM, _videoSpiel.getSystem());
     }
 
     @Test
     public void testGetMedienBezeichnung()
     {
-        assertEquals(BEZEICHNUNG, _videospiel1.getMedienBezeichnung());
+        String videospielBezeichnung = BEZEICHNUNG;
+        assertEquals(videospielBezeichnung, _videoSpiel.getMedienBezeichnung());
+    }
+
+    protected Videospiel getMedium()
+    {
+        return new Videospiel(TITEL, KOMMENTAR, SYSTEM);
     }
 
     @Test
-    public void testKonstruktor()
+    public final void testSetKommentar()
     {
-        assertEquals(TITEL, _videospiel1.getTitel());
-        assertEquals(KOMMENTAR, _videospiel1.getKommentar());
-        assertEquals(SYSTEM, _videospiel1.getSystem());
-        assertEquals(BEZEICHNUNG, _videospiel1.getMedienBezeichnung());
+        Videospiel medium = getMedium();
+        medium.setKommentar("Kommentar2");
+        assertEquals("Kommentar2", medium.getKommentar());
     }
 
     @Test
-    /*
-     * Von ein und der selben Videospiele kann es mehrere Exemplare geben, die von
-     * unterschiedlichen Personen ausgeliehen werden können.
-     */
-    public void testEquals()
+    public final void testSetTitel()
     {
-        assertNotEquals("Mehrere Exemplare der gleichen Videospiele sollten ungleich sein", _videospiel1, _videospiel2);
-        assertEquals("Dasselbe Exemplare der gleichen Videospiele sollte gleich sein", _videospiel1, _videospiel1);
+        Videospiel medium = getMedium();
+        medium.setTitel("Titel2");
+        assertEquals("Titel2", medium.getTitel());
     }
-
+    
     @Test
-    /*
-     *  Testet ob formartierter string passt
-     */
-    public void testFormatierterString()
+    public final void testGetFormatiertenString()
     {
-        assertEquals("Formatierter String ist nicht wie erwartet", "Videospiel:\n" +
-                "    Titel: Titel\n" +
-                "    System: Steamdeck\n" +
-                "    Kommentar: Kommentar\n" +
-                "    Bezeichnung Videospiel", _videospiel1.getFormatiertenString());
-    }
-
-    private Videospiel getMedium()
-    {
-        return new Videospiel(TITEL, SYSTEM, BEZEICHNUNG, KOMMENTAR);
+        Medium medium = getMedium();
+        assertNotNull(medium.getFormatiertenString());
+        assertEquals(FORMATIERTER_STRING, medium.getFormatiertenString());
     }
 }

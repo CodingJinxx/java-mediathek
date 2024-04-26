@@ -209,10 +209,11 @@ class AusleihWerkzeug
      */
     private void leiheAusgewaehlteMedienAus()
     {
-        List<Medium> medien = _medienAuflisterWerkzeug.getSelectedMedien();
+        List<Medium> selectedMedien = _medienAuflisterWerkzeug
+            .getSelectedMedien();
         Kunde selectedKunde = _kundenAuflisterWerkzeug.getSelectedKunde();
         Datum heute = Datum.heute();
-        _verleihService.verleiheAn(selectedKunde, medien, heute);
+        _verleihService.verleiheAn(selectedKunde, selectedMedien, heute);
     }
 
     /**
@@ -220,7 +221,8 @@ class AusleihWerkzeug
      */
     private void zeigeAusgewaehlteMedien()
     {
-        List<Medium> selectedMedien = _medienAuflisterWerkzeug.getSelectedMedien();
+        List<Medium> selectedMedien = _medienAuflisterWerkzeug
+            .getSelectedMedien();
         _medienDetailAnzeigerWerkzeug.setMedien(selectedMedien);
     }
 

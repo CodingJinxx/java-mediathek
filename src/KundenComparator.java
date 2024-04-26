@@ -27,8 +27,7 @@ class KundenComparator implements Comparator<Kunde>, Serializable
         int result = 0;
         if ((kunde1 != null) && (kunde2 != null))
         {
-            result = kunde1.getNachname()
-                .compareTo(kunde2.getNachname());
+            result = kunde1.getNachname().compareTo(kunde2.getNachname());
         }
         return result;
     }

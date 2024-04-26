@@ -21,7 +21,7 @@ class AusleiheMedienTableModel extends AbstractTableModel
 
     /**
      * Eine sortierte Map, die Medien zwischenspeichert/cached und auf boolsche
-     * Werte abbildet, die angeben, ob ein Medium entliehe ist (true) oder nicht
+     * Werte abbildet, die angeben, ob ein {@link Medium}  entliehe ist (true) oder nicht
      * (false).
      */
     private List<AusleiheMedienFormatierer> _medienListe;
