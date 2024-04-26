@@ -1,3 +1,11 @@
+
+/**
+ * Ein Medium definiert Eigenschaften, die alle Medien unserer Mediathek
+ * gemeinsam haben. Der Titel eines Mediums dient als eindeutige Identifikation.
+ * Ein Medium kann ausgeliehen und zurückgegeben werden.
+ *
+ * @author Jay, Sinan
+ */
 public abstract class AbstractMedium implements Medium {
 
 
@@ -5,14 +13,14 @@ public abstract class AbstractMedium implements Medium {
      * Der Titel des Mediums
      *
      */
-    protected String _titel;
+    private String _titel;
 
     /**
      * Ein Kommentar zum Medium
      */
-    protected String _kommentar;
+    private String _kommentar;
 
-    public AbstractMedium(String titel, String kommentar) {
+    protected AbstractMedium(String titel, String kommentar) {
         assert titel != null : "Vorbedingung verletzt: titel != null";
         assert kommentar != null : "Vorbedingung verletzt: kommentar != null";
         this._titel = titel;
@@ -64,5 +72,11 @@ public abstract class AbstractMedium implements Medium {
     public String toString()
     {
         return getFormatiertenString();
+    }
+
+    @Override
+    public Geldbetrag berechneMietgebuehr(int mietTage) {
+        assert mietTage > 0 : "Vorbedingung verletzt: mietTage > 0";
+        return new Geldbetrag(mietTage * 300);
     }
 }

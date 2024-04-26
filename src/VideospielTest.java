@@ -64,4 +64,18 @@ public class VideospielTest
         assertNotNull(medium.getFormatiertenString());
         assertEquals(FORMATIERTER_STRING, medium.getFormatiertenString());
     }
+
+    @Test
+    /*
+     * Pro Miettag sollten 300 Euro-Cent verrechnet werden
+     */
+    public final void testMietTage() {
+        Medium medium = getMedium();
+
+        assertEquals(2, medium.berechneMietgebuehr(1).getEuroAnteil());
+        assertEquals(2, medium.berechneMietgebuehr(2).getEuroAnteil());
+        assertEquals(2, medium.berechneMietgebuehr(5).getEuroAnteil());
+        assertEquals(2, medium.berechneMietgebuehr(10).getEuroAnteil());
+        assertEquals(2, medium.berechneMietgebuehr(100).getEuroAnteil());;
+    }
 }

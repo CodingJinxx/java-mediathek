@@ -109,7 +109,7 @@ class Verleihkarte
     {
         // TODO für Aufgabe 4.2.4: Dummy-Implementation ersetzen, sobald ein
         // Medium die benötigte Funktionialität anbietet.
-        return new Geldbetrag(0);
+        return getMedium().berechneMietgebuehr(getAusleihdauer());
     }
 
     /**

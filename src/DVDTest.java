@@ -76,4 +76,18 @@ public class DVDTest
         return new DVD(TITEL, KOMMENTAR, REGISSEUR, LAENGE);
     }
 
+
+    @Test
+    /*
+     * Pro Miettag sollten 300 Euro-Cent verrechnet werden
+     */
+    public final void testMietTage() {
+        Medium medium = getMedium();
+
+        assertEquals(3, medium.berechneMietgebuehr(1).getEuroAnteil());
+        assertEquals(6, medium.berechneMietgebuehr(2).getEuroAnteil());
+        assertEquals(15, medium.berechneMietgebuehr(5).getEuroAnteil());
+        assertEquals(30, medium.berechneMietgebuehr(10).getEuroAnteil());
+        assertEquals(300, medium.berechneMietgebuehr(100).getEuroAnteil());;
+    }
 }
